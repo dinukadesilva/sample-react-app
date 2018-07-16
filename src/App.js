@@ -77,8 +77,20 @@ class App extends Component {
                 </button>
 
                 <ul className="notes-list">
-                    {this.state.notes.map((note) => {
-                        return <li className="notes-list-item">
+                    {this.state.notes.map((note, noteIdex) => {
+                        return <li className="notes-list-item" key={noteIdex}>
+                            <button
+                                onClick={() => {
+                                    this.setState({
+                                        ...this.state,
+                                        notes: this.state.notes.splice(noteIdex, 1)
+                                    })
+                                }}
+                            >
+                                <i class="material-icons">
+                                    close
+                                </i>
+                            </button>
                             <strong>{note.title}</strong>
                             <p>{note.description}</p>
                         </li>
