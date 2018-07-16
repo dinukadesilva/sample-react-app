@@ -10,7 +10,11 @@ class App extends Component {
             notes: [
                 {title: "Security Assignment", description: "The deadline is on 23rd"},
                 {title: "Concert Rehearsals", description: "25th and 26th in the evening"}
-            ]
+            ],
+            newNote: {
+                title: "",
+                description: ""
+            }
         }
     }
 
@@ -24,6 +28,54 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
+                <input
+                    type="text"
+                    onChange={(event) => {
+                        this.setState({
+                            ...this.state,
+                            newNote: {
+                                ...this.state.newNote,
+                                title: event.target.value
+                            }
+                        })
+                    }}
+                    value={this.state.newNote.title}
+                    placeholder="Title"
+                />
+
+                <input
+                    type="text"
+                    onChange={(event) => {
+                        this.setState({
+                            ...this.state,
+                            newNote: {
+                                ...this.state.newNote,
+                                description: event.target.value
+                            }
+                        })
+                    }}
+                    value={this.state.newNote.description}
+                    placeholder="Description"
+                />
+
+                <button
+                    onClick={() => {
+                        this.setState({
+                            ...this.state,
+                            notes: [
+                                ...this.state.notes,
+                                this.state.newNote
+                            ],
+                            newNote: {
+                                title: "",
+                                description: ""
+                            }
+                        })
+                    }}
+                >
+                    Add
+                </button>
+
                 <ul className="notes-list">
                     {this.state.notes.map((note) => {
                         return <li className="notes-list-item">
