@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.notes-list {
+  list-style: none;
+}
+
+.notes-list .notes-list-item {
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  width: 250px;
+  background: #dedede;
+  box-shadow: 1px 1px 1px 1px #00000066;
+}
